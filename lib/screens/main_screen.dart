@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:open_weather_app/component/search_widget.dart';
 import 'package:open_weather_app/data/city_data.dart';
@@ -19,7 +20,7 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   List<Cities> cities;
   String query = '';
-  final _cityTextController = TextEditingController();
+
   final WeatherController _weatherController = Get.put(WeatherController());
   final _dataService = DataService();
 
@@ -39,13 +40,15 @@ class _MainScreenState extends State<MainScreen> {
     cities = allCity;
   }
 
-  Widget buildSearch() => SearchWidget(
+  Widget buildSearch() =>
+      SearchWidget(
         text: query,
         hintText: 'Хотын нэрээ оруулна уу',
         onChanged: searchCity,
       );
 
-  Widget buildCities(Cities city) => ListTile(
+  Widget buildCities(Cities city) =>
+      ListTile(
         onTap: () {
           showDetail(city.cityCode, city.location);
         },
@@ -78,7 +81,8 @@ class _MainScreenState extends State<MainScreen> {
         centerTitle: true,
       ),
       body: Obx(
-        () => SafeArea(
+        () =>
+        SafeArea(
           child: Padding(
             padding: const EdgeInsets.symmetric(
               vertical: 4.0,
@@ -87,11 +91,16 @@ class _MainScreenState extends State<MainScreen> {
             child: Center(
               child: Column(
                 children: [
+                  Text(
+                    "Test",
+                    style: TextStyle(
+                      fontSize: 12,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                   _weatherController.weather.value.cityName != "" &&
-                          _weatherController.weather.value.cityName != null
-                      ? WeatherInformation(
-                          data: _weatherController.weather.value,
-                          cityName: _weatherController.weather.value.cityName)
+                      _weatherController.weather.value.cityName != null
+                      ? WeatherInformation(data: _weatherController.weather.value, cityName: _weatherController.weather.value.cityName)
                       : Container(),
                   buildSearch(),
                   SizedBox(height: 10),
