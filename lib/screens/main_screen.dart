@@ -40,12 +40,11 @@ class _MainScreenState extends State<MainScreen> {
     cities = allCity;
   }
 
-  Widget buildSearch() =>
-      SearchWidget(
-        text: query,
-        hintText: 'Хотын нэрээ оруулна уу',
-        onChanged: searchCity,
-      );
+  Widget buildSearch() => SearchWidget(
+    text: query,
+    hintText: 'Хотын нэрээ оруулна уу',
+    onChanged: searchCity,
+  );
 
   Widget buildCities(Cities city) =>
       ListTile(
