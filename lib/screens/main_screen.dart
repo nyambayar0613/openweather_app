@@ -40,20 +40,20 @@ class _MainScreenState extends State<MainScreen> {
   }
 
   Widget buildSearch() => SearchWidget(
-        text: query,
-        hintText: 'Хотын нэрээ оруулна уу',
-        onChanged: searchCity,
-      );
+    text: query,
+    hintText: 'Хотын нэрээ оруулна уу',
+    onChanged: searchCity,
+  );
 
   Widget buildCities(Cities city) => ListTile(
-        onTap: () {
-          showDetail(city.cityCode, city.location);
-        },
-        title: Text(city.location),
-        leading: CircleAvatar(
-          backgroundImage: AssetImage('assets/${city.flag}'),
-        ),
-      );
+    onTap: () {
+      showDetail(city.cityCode, city.location);
+    },
+    title: Text(city.location),
+    leading: CircleAvatar(
+      backgroundImage: AssetImage('assets/${city.flag}'),
+    ),
+  );
 
   void searchCity(String query) {
     final cities = allCity.where((city) {
